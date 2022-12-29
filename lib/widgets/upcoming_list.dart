@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class UpcomingList extends StatelessWidget {
-  const UpcomingList({Key? key}) : super(key: key);
+import '../Model/Movie.dart';
 
+class UpcomingList extends StatelessWidget {
+  const UpcomingList({Key? key, required this.index}) : super(key: key);
+final int index ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +21,7 @@ class UpcomingList extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://resizing.flixster.com/QJkeIM6LIvwmRGiLKrNBcpZIk8M=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzAwYzExZjlmLWJlODQtNDY4Mi1iNDhkLWU2YWNmMGIyMDgwMi5qcGc="))),
+                          upcomingMoive[index].imageUrl))),
               ),
               Align(
                 alignment: Alignment.topRight,
@@ -29,13 +31,13 @@ class UpcomingList extends StatelessWidget {
             SizedBox(
               height: 4,
             ),
-            Text("Movie",
+            Text(upcomingMoive[index].title,
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
                 textAlign: TextAlign.center),
-            Text("13 /dec",
+            Text(upcomingMoive[index].description,
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center)
           ],

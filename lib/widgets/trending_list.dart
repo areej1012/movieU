@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TrendingList extends StatelessWidget {
-  const TrendingList({Key? key}) : super(key: key);
+import '../Model/Movie.dart';
 
+class TrendingList extends StatelessWidget {
+  const TrendingList({Key? key, required this.index}) : super(key: key);
+ final int index;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +24,7 @@ class TrendingList extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                            "https://resizing.flixster.com/QJkeIM6LIvwmRGiLKrNBcpZIk8M=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzAwYzExZjlmLWJlODQtNDY4Mi1iNDhkLWU2YWNmMGIyMDgwMi5qcGc="))),
+                            trendingMovie[index].imageUrl))),
               ),
               Container(
                 padding: const EdgeInsets.all(10),
@@ -30,23 +32,23 @@ class TrendingList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Title",
+                    Text(trendingMovie[index].title,
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.white)),
                     SizedBox(height: 8,),
                     Container(
-                        width: MediaQuery.of(context).size.width/2 ,
-                        child: Text("Dehkdfsjkdjflkcgjdfkgjfkdgjvfksdjgfksdjggjfkgjnfkgjnfkgnjdfklgndfkgndfkgndks",
+                        width: MediaQuery.of(context).size.width/2,
+                        child: Text(trendingMovie[index].description,
                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
                             )
                     ),
-                    IconButton(icon: Icon(Icons.favorite_border), onPressed: () {  },
-                    alignment: Alignment.bottomRight,)
+
                   ],
                 ),
-              )
+              ),
+
             ],
           ),
         ),

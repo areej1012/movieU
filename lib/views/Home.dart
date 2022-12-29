@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../widgets/playing_now_list.dart';
 import '../widgets/trending_list.dart';
 import '../widgets/upcoming_list.dart';
+import '../Model/Movie.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -76,13 +77,15 @@ class _HomeState extends State<Home> {
                 )),
             Container(
               height: 280,
-              child: ListView(
+              child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  PlayingNowList(),
-                  PlayingNowList(),
-                  PlayingNowList()
-                ],
+                itemCount: moviePlayNow.length,
+                itemBuilder: (ctx, i) => PlayingNowList(i: i),
+                // children: <Widget>[
+                //   PlayingNowList(),
+                //   PlayingNowList(),
+                //   PlayingNowList()
+                // ],
               ),
             ),
             const SizedBox(
@@ -112,13 +115,15 @@ class _HomeState extends State<Home> {
             Container(
               height: 500,
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListView(
+              child: ListView.builder(
+                itemBuilder: (c , i) => TrendingList(index: i,),
+                itemCount: trendingMovie.length,
                 physics: NeverScrollableScrollPhysics(),
-                children: <Widget>[
-                  TrendingList(),
-                  TrendingList(),
-                  TrendingList()
-                ],
+                // children: <Widget>[
+                //   TrendingList(),
+                //   TrendingList(),
+                //   TrendingList()
+                // ],
               ),
             ),
 
@@ -148,13 +153,15 @@ class _HomeState extends State<Home> {
                 )),
             Container(
               height: 280,
-              child: ListView(
+              child: ListView.builder(
+                itemBuilder: (c, i) => UpcomingList(index: i,),
+                itemCount: upcomingMoive.length,
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  UpcomingList(),
-                  UpcomingList(),
-                  UpcomingList()
-                ],
+                // children: <Widget>[
+                //   UpcomingList(),
+                //   UpcomingList(),
+                //   UpcomingList()
+                // ],
               ),
             ),
           ],
