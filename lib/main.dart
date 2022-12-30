@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_api/views/Home.dart';
 
+import 'views/moviedetail.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black
+        scaffoldBackgroundColor: Colors.black,
+        primarySwatch: Colors.red
     ),
-      home: const Home(),
+      home: const MovieDetailScreen(),
     );
   }
 }
